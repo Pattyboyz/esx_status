@@ -6,8 +6,8 @@ function getStatusData()
     for i=1, #Status, 1 do
         status[#status+1] = {
             name = Status[i].name,
-			val = Status[i].val,
-			percent = (Status[i].val / Config.MaxStatus) * 100
+            val = Status[i].val,
+            percent = (Status[i].val / Config.MaxStatus) * 100
         };
     end
 
