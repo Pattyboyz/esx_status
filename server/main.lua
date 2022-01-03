@@ -4,8 +4,8 @@ function initializeStatus(src, player)
     local status = {};
 
     MySQL.Async.fetchScalar('SELECT status FROM users WHERE identifier = @identifier', {
-		['@identifier'] = player.identifier
-	}, function(result)
+        ['@identifier'] = player.identifier
+    }, function(result)
         if (result and #result > 0) then
             status = json.decode(result);
         end
@@ -23,9 +23,9 @@ function onPlayerDropped(src)
 
     local identifier = GetPlayerIdentifier(src);
     MySQL.Async.execute('UPDATE users SET status = @status WHERE identifier = @identifier', {
-		['@identifier'] = identifier,
-		['@status'] = json.encode(status.status),
-	});
+        ['@identifier'] = identifier,
+        ['@status'] = json.encode(status.status),
+    });
 
     status = nil;
 end
